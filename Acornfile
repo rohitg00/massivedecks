@@ -1,0 +1,24 @@
+containers: client: {
+	image: "ghcr.io/lattyware/massivedecks/client:2.8.0"
+	ports: publish: "80:8080/http"
+    depends_on: "server"
+	env: {
+      POSTGRES_USER: "@{service.db.secrets.admin.username}"
+      POSTGRES_PASSWORD: "@{service.db.secrets.admin.password}"
+	}
+}
+
+containers: server: {
+	image: "ghcr.io/lattyware/massivedecks/server:2.8.0"
+    ports: "8081"
+    dirs: "/md/config.json5": "./config.json5"
+	env: {
+      POSTGRES_USER: "@{service.db.secrets.admin.username}"
+      POSTGRES_PASSWORD: "@{service.db.secrets.admin.password}"
+	}
+}
+
+services: db: {
+	image: "ghcr.io/acorn-io/postgres:v15.3-0"
+	serviceArgs: dbName: "massivedecks"
+}
