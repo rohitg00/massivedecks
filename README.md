@@ -9,7 +9,7 @@ You can deploy the sample web app on the Acorn SaaS Platform to test the Applica
 
 Let us have a close look at the Acornfile and see what is defined:
 
-- **Containers**: These containers will be deployed for running Massivedecks. We have two containers, one for Massivedecks and the other for Postgres. We are setting the environment variables returned from the MariaDB Acorn service for the Massivedecks container.
+- **Containers**: These containers will be deployed for running Massivedecks. We have two containers, one for Massivedecks and the other for Postgres. We are setting the environment variables returned from the Postgres Acorn service for the Massivedecks container.
 - **Services**: Acorn services are external services your application can utilize. In this case, we use the [PostgreSQL Acorn service](https://github.com/acorn-io/postgres/pkgs/container/postgres).
 
 ## Steps
